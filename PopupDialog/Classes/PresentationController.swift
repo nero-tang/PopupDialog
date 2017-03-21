@@ -34,7 +34,6 @@ final internal class PresentationController: UIPresentationController {
 
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-        overlay.blurView.underlyingView = presentingViewController?.view
         overlay.frame = (presentingViewController?.view.bounds)!
     }
 
@@ -43,19 +42,18 @@ final internal class PresentationController: UIPresentationController {
         containerView!.insertSubview(overlay, at: 0)
 
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (coordinatorContext) -> Void in
-            self.overlay.alpha = 1.0
+            self.overlay.blurView.effect = UIBlurEffect(style: .dark)
         }, completion: nil)
     }
 
     override func dismissalTransitionWillBegin() {
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (coordinatorContext) -> Void in
-            self.overlay.alpha = 0.0
+            self.overlay.blurView.effect = nil
         }, completion: nil)
     }
 
     override func containerViewWillLayoutSubviews() {
         presentedView!.frame = frameOfPresentedViewInContainerView
-        overlay.blurView.setNeedsDisplay()
     }
 
 }

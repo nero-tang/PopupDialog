@@ -63,10 +63,7 @@ class AppearanceTests: XCTestCase {
         
         // Overlay view
         let overlay = PopupDialogOverlayView(frame: .zero)
-        expect(overlay.color)      == UIColor.black
-        expect(overlay.blurRadius) == 8
         expect(overlay.blurEnabled).to(beTrue())
-        expect(overlay.liveBlur).to(beFalse())
     }
 
     func testCustomAppearance() {
@@ -88,11 +85,7 @@ class AppearanceTests: XCTestCase {
 
         // Customize overlay appearance
         let ov = PopupDialogOverlayView.appearance()
-        ov.color = UIColor.yellow
-        ov.blurRadius = 20
         ov.blurEnabled = false
-        ov.liveBlur = true
-        ov.opacity = 0.5
 
         // Customize default button appearance
         let db = DefaultButton.appearance()
@@ -116,11 +109,7 @@ class AppearanceTests: XCTestCase {
         expect(pcv.shadowEnabled).to(beFalse())
 
         // Overlay customized appearance
-        expect(ov.color)      == UIColor.yellow
-        expect(ov.blurRadius) == 20
-        expect(ov.opacity)    == 0.5
         expect(ov.blurEnabled).to(beFalse())
-        expect(ov.liveBlur).to(beTrue())
 
         // Button customized appearance
         expect(db.titleFont)      == UIFont(name: "HelveticaNeue", size: 14)!
@@ -148,11 +137,7 @@ class AppearanceTests: XCTestCase {
         
         // Customize overlay appearance
         let ov = PopupDialogOverlayView.appearance()
-        ov.color       = UIColor.black
-        ov.blurRadius  = 8
         ov.blurEnabled = true
-        ov.liveBlur    = false
-        ov.opacity     = 0.7
         
         // Customize default button appearance
         let db = DefaultButton.appearance()

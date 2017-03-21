@@ -32,7 +32,6 @@ final public class PopupDialogDefaultViewController: UIViewController {
     }
 
     override public func loadView() {
-        super.loadView()
         view = PopupDialogDefaultView(frame: .zero)
     }
 }
