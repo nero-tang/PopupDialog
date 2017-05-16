@@ -77,10 +77,6 @@ internal extension InteractiveTransition {
         // http://www.thorntech.com/2016/02/ios-tutorial-close-modal-dragging/
         let translation = sender.translation(in: vc.view)
         let verticalMovement = translation.y / vc.view.bounds.height
-        let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
-        let downwardMovementPercent = fminf(downwardMovement, 1.0)
-        let progress = CGFloat(downwardMovementPercent)
-
-        return progress
+        return min(max(verticalMovement, 0.0), 1.0)
     }
 }

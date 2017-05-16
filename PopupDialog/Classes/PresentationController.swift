@@ -43,13 +43,21 @@ final internal class PresentationController: UIPresentationController {
 
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (coordinatorContext) -> Void in
             self.overlay.blurView.effect = UIBlurEffect(style: .dark)
-        }, completion: nil)
+        }, completion: {
+            if $0.isCancelled {
+                self.overlay.blurView.effect = nil
+            }
+        })
     }
 
     override func dismissalTransitionWillBegin() {
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (coordinatorContext) -> Void in
             self.overlay.blurView.effect = nil
-        }, completion: nil)
+        }, completion: {
+            if $0.isCancelled {
+                self.overlay.blurView.effect = UIBlurEffect(style: .dark)
+            }
+        })
     }
 
     override func containerViewWillLayoutSubviews() {
