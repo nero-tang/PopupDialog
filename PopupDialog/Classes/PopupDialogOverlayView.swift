@@ -31,7 +31,7 @@ final public class PopupDialogOverlayView: UIView {
     // MARK: - Appearance
 
     /// Turns the blur of the overlay view on or off
-    public dynamic var blurEnabled: Bool {
+    @objc public dynamic var blurEnabled: Bool {
         get { return !blurView.isHidden }
         set { blurView.isHidden = !newValue }
     }
